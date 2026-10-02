@@ -1,0 +1,78 @@
+/* SEL — SpaceX-style dark theme */
+:root{
+  --bg:#000; --fg:#fff; --mut:#a7a7a7; --line:#1c1c1c; --acc:#4db2ff;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Inter',-apple-system,'Segoe UI',sans-serif;
+  font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.brand,.btn{font-family:'Archivo','Arial Narrow',sans-serif}
+.wrap{max-width:1100px;margin:0 auto;padding:0 32px}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);
+  background:rgba(0,0,0,.55);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{max-width:1400px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.brand{color:#fff;text-decoration:none;font-weight:800;letter-spacing:.18em;font-size:14px}
+.links{display:flex;gap:26px}
+.links a{color:var(--mut);text-decoration:none;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;transition:color .2s}
+.links a:hover{color:#fff}
+@media(max-width:900px){.links{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('img/hero.jpg') center/cover no-repeat, radial-gradient(ellipse at 50% 40%,#0a1628 0%,#000 70%)}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.25) 45%,rgba(0,0,0,.92) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:120px 32px 80px}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);margin-bottom:22px}
+.hero h1{font-size:clamp(38px,6vw,76px);font-weight:800;line-height:1.04;letter-spacing:-.01em;text-transform:uppercase;max-width:16ch;margin-bottom:28px}
+.hero p{max-width:62ch;color:#d7d7d7}
+.hero p+p{margin-top:16px}
+.cta{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap}
+.btn{display:inline-block;padding:15px 42px;border:1px solid #fff;color:#fff;text-decoration:none;
+  font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:all .25s;background:transparent}
+.btn:hover{background:#fff;color:#000}
+.btn.ghost{border-color:rgba(255,255,255,.35)}
+.scroll{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:.4em;color:var(--mut);
+  animation:bob 2.4s ease-in-out infinite;z-index:2}
+@keyframes bob{0%,100%{opacity:.4;transform:translate(-50%,0)}50%{opacity:1;transform:translate(-50%,8px)}}
+
+/* bands */
+.band{padding:110px 0;border-top:1px solid var(--line)}
+.band .kicker{margin-bottom:14px}
+.band h2{font-size:clamp(26px,3.4vw,44px);font-weight:800;text-transform:uppercase;letter-spacing:.01em;
+  line-height:1.12;margin:0 0 26px;max-width:22ch}
+.band h2:not(:first-of-type){margin-top:64px}
+.band p{color:#cfcfcf;max-width:72ch;margin-bottom:18px}
+.band p strong,.band li strong{color:#fff}
+.band ul,.band ol{margin:0 0 22px 22px;color:#cfcfcf;max-width:70ch}
+.band li{margin-bottom:10px}
+.band li::marker{color:var(--acc)}
+
+/* programs */
+.programs{padding:110px 0 0;border-top:1px solid var(--line)}
+.programs .wrap{margin-bottom:40px}
+.programs h2{font-size:clamp(26px,3.4vw,44px);font-weight:800;text-transform:uppercase}
+.prog{position:relative;min-height:88vh;display:flex;align-items:center;background:#050505 center/cover no-repeat;
+  border-top:1px solid var(--line);overflow:hidden}
+.prog::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.72) 55%,rgba(0,0,0,.35) 100%)}
+.prog-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:90px 32px;width:100%}
+.prog h3{font-size:clamp(30px,4vw,54px);font-weight:800;text-transform:uppercase;margin-bottom:8px;letter-spacing:.01em}
+.prog h4,.prog .q{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);margin:30px 0 10px}
+.prog p{color:#d4d4d4;max-width:68ch;margin-bottom:16px}
+.prog ul,.prog ol{margin:0 0 18px 22px;color:#d4d4d4;max-width:66ch}
+.prog li{margin-bottom:8px}
+/* turn h2 subheads inside progs into eyebrow labels */
+.prog h2{font-size:12px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--acc);margin:30px 0 10px}
+
+/* contact + footer */
+.contact{text-align:left}
+.contact .btn{margin-top:10px}
+.fine{color:var(--mut);font-size:14px;margin-top:26px}
+footer{border-top:1px solid var(--line);padding:34px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--mut);font-size:13px;letter-spacing:.08em}
+
+/* reveal */
+.band,.prog{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.band.in,.prog.in{opacity:1;transform:none}
+.hero{opacity:1;transform:none}
