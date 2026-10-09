@@ -76,3 +76,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 .band,.prog{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
 .band.in,.prog.in{opacity:1;transform:none}
 .hero{opacity:1;transform:none}
+
+/* Content is visible even if JavaScript or observation fails. */
+.band,.prog{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.band,.prog{transition:none}.scroll{animation:none}}
